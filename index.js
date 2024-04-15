@@ -78,7 +78,7 @@ const add_role = () => {
         const departmentQuestion = AddRoleQuestions[2];
         results.forEach((department) => {
             departmentQuestion.choices.push({
-                value: department_id,
+                value: department.id,
                 name: department.name
             });
         });
