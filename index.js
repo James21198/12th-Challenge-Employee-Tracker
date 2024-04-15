@@ -93,3 +93,71 @@ const add_role = () => {
             })
     });
 }
+
+const add_employee = () {
+    db.getRoles().then((results) => {
+
+        const roleQuestion = AddEmployeeQuestions[2];
+        results.forEach((role) => {
+            const role_summary = `${role.title} (${role.department_name}: ${role.salary})`;
+            roleQuestion.choices.push({
+                value: role.id,
+                name: role_summary
+            });
+        });
+
+        db.getEmployees().then((results) => {
+
+            const managerQuestion = AddEmployeeQuestions[3];
+            results.forEach((employee) => {
+                managerQuestion.choices.push({
+                    value: employee.id,
+                    name: employee.name
+                });
+            });
+
+            inquirer
+                .prompt(AddEmployeeQuestions)
+                .then((response) => {
+                    db.addEmployee(response).then((results) => {
+                        console.log('\n', results, '\n');
+                        doMenuQuestions();
+                    });
+                })
+        });
+    });
+}
+
+const update_role = () => {
+    db.getEmployees().then((results) => {
+        const employeeQuestion = UpdateEmployeeRoleQuestions[0];
+        results.forEach((employee) => {
+            employeeQuestion.choices.push({
+                value: employee.id,
+                name: employee.name
+            });
+        });
+
+        db.getRoles().then((results) => {
+
+            const roleQuestion = UpdateEmployeeRoleQuestions[1];
+            results.forEach((role) => {
+                roleQuestion.choices.push({
+                    value: role.id,
+                    name: role.title
+                });
+            });
+
+            inquirer
+                .prompt(UpdateEmployeeRoleQuestions)[1]
+                .then((response) => {
+                    db.UpdateEmployeeRole(response).then((results) => {
+                        console.log('\n', results, '\n');
+                        doMenuQuestions();
+                    });
+                })
+        });
+    });
+}
+
+doMenuQuestions();
