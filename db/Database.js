@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+const mysql = require('pg');
 
 class Database {
     constructor (options) {

@@ -4,8 +4,8 @@ const EmployeeDatabase = require('./db/EmployeeDatabase.js');
 
 const db = new EmployeeDatabase({
     host: 'localhost',
-    user: 'root',
-    password: 'Password',
+    user: 'postgres',
+    password: 'Bcfc@1998',
     database: 'employee_db'
 });
 
@@ -94,7 +94,7 @@ const add_role = () => {
     });
 }
 
-const add_employee = () {
+const add_employee = () => {
     db.getRoles().then((results) => {
 
         const roleQuestion = AddEmployeeQuestions[2];
