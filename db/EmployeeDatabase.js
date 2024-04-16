@@ -79,5 +79,34 @@ class EmployeeDatabase extends Database {
         });
     }
 
-    
+    addEmployee(employee) {
+        const employeeData = {
+            first_name: employee.first_name,
+            last_name: employee.last_name,
+            role_id: employee.role_id,
+            manager_id: employee.manager_id,
+        };
+
+        return new Promise((resolve, reject) => {
+            this.db.query('INSERT INTO employee SET ?', employeeData, (err, results) => {
+                if (err) {
+                    reject(err);
+                }
+                resolve(`${employee.first_name} ${employee.last_name} added successfully`);
+            });
+        });
+    }
+
+    updateEmployeeRole(employee) {
+        return new Promise((resolve, reject) => {
+            this.db.query('UPDATE employee SET role_id=? WHERE id=?', [employee.role_id, employee.employee_id], (err, results) => {
+                if(err) {
+                    reject(err);
+                }
+                resolve(results);
+            });
+        });
+    }
 }
+
+module.exports = EmployeeDatabase;
