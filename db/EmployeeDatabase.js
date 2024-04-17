@@ -5,7 +5,7 @@ class EmployeeDatabase extends EmployeeDB {
         super(options);
     }
 
-    getDepartment() {
+    getDepartments() {
         return new Promise((resolve, reject) => {
             this.db.query('SELECT * FROM department', (err, results) => {
                 if(err) {
@@ -41,7 +41,7 @@ class EmployeeDatabase extends EmployeeDB {
                 FROM employee
                  INNER JOIN role ON employee.role_id = role.id
                  INNER JOIN department ON role.department_id = department.id
-                 LEFT JOIN employee as manager ON employee.manager_id = managerid`
+                 LEFT JOIN employee as manager ON employee.manager_id = manager.id`
                 , (err, results) => {
                     if (err) {
                         reject(err);

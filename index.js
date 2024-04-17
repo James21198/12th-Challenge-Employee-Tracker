@@ -44,21 +44,21 @@ const doMenuQuestions = () => {
 
 const view_departments = () => {
     db.getDepartments().then((results) => {
-        console.table(results);
+        console.table(results.rows);
         doMenuQuestions();
     });
 }
 
 const view_roles = () => {
-    db.getroles().then((results) => {
-        console.table(results);
+    db.getRoles().then((results) => {
+        console.table(results.rows);
         doMenuQuestions();
     });
 }
 
 const view_employees = () => {
     db.getEmployees().then((results) => {
-        console.table(results);
+        console.table(results.rows);
         doMenuQuestions();
     });
 }
