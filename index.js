@@ -5,6 +5,7 @@ const EmployeeDatabase = require('./db/EmployeeDatabase.js');
 const db = new EmployeeDatabase({
     host: 'localhost',
     user: 'postgres',
+    // Enter postgress password below
     password: 'Bcfc@1998',
     database: 'employee_db'
 });
