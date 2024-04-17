@@ -1,6 +1,6 @@
-const Database = require('./Database.js');
+const EmployeeDB = require('./Database.js');
 
-class EmployeeDatabase extends Database {
+class EmployeeDatabase extends EmployeeDB {
     constructor(options) {
         super(options);
     }
