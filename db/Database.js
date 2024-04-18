@@ -17,12 +17,9 @@ class Database {
 
     const { host, user, password, database } = this.options;
 
-    // Connect to database
     const pool = new Pool(
       {
-        // TODO: Enter PostgreSQL username
         user: user,
-        // TODO: Enter PostgreSQL password
         password: password,
         host: host,
         database: database,
