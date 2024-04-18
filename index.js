@@ -135,7 +135,7 @@ const update_role = () => {
         results.rows.forEach((employee) => {
             employeeQuestion.choices.push({
                 value: employee.id,
-                name: employee.name
+                name: employee.first_name + ' ' + employee.last_name
             });
         });
 
@@ -150,10 +150,10 @@ const update_role = () => {
             });
 
             inquirer
-                .prompt(UpdateEmployeeRoleQuestions)[1]
+                .prompt(UpdateEmployeeRoleQuestions)
                 .then((response) => {
-                    db.UpdateEmployeeRole(response).then((results) => {
-                        console.log('\n', results, '\n');
+                    db.updateEmployeeRole(response).then((results) => {
+                        console.log('Employee Updated Successfully');
                         doMenuQuestions();
                     });
                 })
