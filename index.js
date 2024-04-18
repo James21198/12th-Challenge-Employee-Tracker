@@ -7,7 +7,7 @@ const db = new EmployeeDatabase({
     user: 'postgres',
     // Enter postgress password below
     password: 'Bcfc@1998',
-    database: 'employee_db'
+    database: 'employees'
 });
 
 db.connect ();
@@ -100,7 +100,7 @@ const add_employee = () => {
 
         const roleQuestion = AddEmployeeQuestions[2];
         results.rows.forEach((role) => {
-            const role_summary = `${role.title} (${role.department_name}: ${role.salary})`;
+            const role_summary = `${role.title} (${role.name}: ${role.salary})`;
             roleQuestion.choices.push({
                 value: role.id,
                 name: role_summary

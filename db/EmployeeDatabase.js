@@ -45,7 +45,7 @@ class EmployeeDatabase extends EmployeeDB {
                 if (err) {
                     reject(err);
                 }
-                resolve(results, `Department ${department.department_name} added successfully`);
+                resolve(`department ${department.department_name} added successfully`);
             });
         });
     }
@@ -62,7 +62,7 @@ class EmployeeDatabase extends EmployeeDB {
                 if(err) {
                     reject(err);
                 }
-                resolve(results, `Role ${role.title} added successfully`);
+                resolve(`role ${role.title} added successfully`);
             });
         });
     }
@@ -87,7 +87,7 @@ class EmployeeDatabase extends EmployeeDB {
 
     updateEmployeeRole(employee) {
         return new Promise((resolve, reject) => {
-            this.db.query('UPDATE employee VALUES ($1, $2) role_id=? WHERE id=?', [employee.role_id, employee.employee_id], (err, results) => {
+            this.db.query('UPDATE employee SET role_id=$1 WHERE id=$2', [employee.role_id, employee.employee_id], (err, results) => {
                 if(err) {
                     reject(err);
                 }
